@@ -414,4 +414,14 @@ class SocketSync
 
     // }}}
     // }}}
+
+    /**
+     * check the stream is close
+     *
+     * @return bool
+     */
+    public function isSocketDead()
+    {
+        return !is_resource($this->stream) || @feof($this->stream);
+    }
 }

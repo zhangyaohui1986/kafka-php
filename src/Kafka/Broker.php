@@ -161,15 +161,22 @@ class Broker
 
     public function getConnect($key, $type, $modeSync = false)
     {
+        $connect = null;
+
         if (isset($this->{$type}[$key])) {
-            return $this->{$type}[$key];
+            $connect =  $this->{$type}[$key];
         }
 
         if (isset($this->brokers[$key])) {
             $hostname = $this->brokers[$key];
             if (isset($this->{$type}[$hostname])) {
-                return $this->{$type}[$hostname];
+                $connect =  $this->{$type}[$hostname];
             }
+        }
+
+        if(isset($connect) && !$connect->isSocketDead()){
+
+            return $connect;
         }
 
         $host = null;
