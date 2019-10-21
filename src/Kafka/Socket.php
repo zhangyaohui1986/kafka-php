@@ -417,7 +417,7 @@ class Socket
      *
      * @return bool
      */
-    protected function isSocketDead()
+    public function isSocketDead()
     {
         return !is_resource($this->stream) || @feof($this->stream);
     }
