@@ -410,7 +410,7 @@ class Socket
     }
 
     // }}}
-    // {{{ protected function isSocketDead()
+    // {{{ public function isSocketDead()
     
     /**
      * check the stream is close
